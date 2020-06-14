@@ -30,13 +30,8 @@ OpenVPN_UDP_Port='1194'
 Privoxy_Port1='3356'
 Privoxy_Port2='8086'
 
-# Squid Ports
-Squid_Port1='3128'
-Squid_Port2='8080'
-Squid_Port3='80'
-
 # OpenVPN Config Download Port
-OvpnDownload_Port='85' # Before changing this value, please read this document. It contains all unsafe ports for Google Chrome Browser, please read from line #23 to line #89: https://chromium.googlesource.com/chromium/src.git/+/refs/heads/master/net/base/port_util.cc
+OvpnDownload_Port='81' # Before changing this value, please read this document. It contains all unsafe ports for Google Chrome Browser, please read from line #23 to line #89: https://chromium.googlesource.com/chromium/src.git/+/refs/heads/master/net/base/port_util.cc
 
 # Server local time
 MyVPS_Time='Asia/Jakarta'
@@ -606,9 +601,10 @@ privoxy
 acl VPN dst IP-ADDRESS/32
 http_access allow VPN
 http_access deny all 
-http_port 0.0.0.0:Squid_Port1
-http_port 0.0.0.0:Squid_Port2
-http_port 0.0.0.0:Squid_Port3
+http_port 0.0.0.0:80
+http_port 0.0.0.0:8080
+http_port 0.0.0.0:8000
+http_port 0.0.0.0:3128
 ### Allow Headers
 request_header_access Allow allow all 
 request_header_access Authorization allow all 
@@ -676,16 +672,11 @@ refresh_pattern ^ftp: 1440 20% 10080
 refresh_pattern ^gopher: 1440 0% 1440
 refresh_pattern -i (/cgi-bin/|\?) 0 0% 0
 refresh_pattern . 0 20% 4320
-visible_hostname MoonlightVPS
+visible_hostname proxy.sshinjector.net
 mySquid
 
  # Setting machine's IP Address inside of our Squid config(security that only allows this machine to use this proxy server)
  sed -i "s|IP-ADDRESS|$IPADDR|g" /etc/squid/squid.conf
- 
- # Setting squid ports
- sed -i "s|Squid_Port1|$Squid_Port1|g" /etc/squid/squid.conf
- sed -i "s|Squid_Port2|$Squid_Port2|g" /etc/squid/squid.conf
- sed -i "s|Squid_Port3|$Squid_Port3|g" /etc/squid/squid.conf
 
  # Starting Proxy server
  echo -e "Restarting proxy server..."
@@ -1063,11 +1054,21 @@ else
  wget -O /usr/bin/badvpn-udpgw "https://github.com/Kyowoni/AutoScriptMoon/raw/master/Files/Plugins/badvpn-udpgw"
 fi
  # Set BadVPN to Start on Boot via .profile
+ sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7000' /root/.profile
+ sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100' /root/.profile
+ sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200' /root/.profile
  sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300' /root/.profile
+ sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7400' /root/.profile
+ sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7500' /root/.profile
  # Change Permission to make it Executable
  chmod +x /usr/bin/badvpn-udpgw
  # Start BadVPN via Screen
+ screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7000
+ screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100
+ screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200
  screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300
+ screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7400
+ screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7500
 }
 #############################################
 #############################################
@@ -1132,7 +1133,7 @@ fi
  # Some assistance and startup scripts
  ConfStartup
  ## DNS maker plugin for SUN users(for vps script usage only)
- wget -qO dnsmaker "https://raw.githubusercontent.com/Bonveio/BonvScripts/master/DNSMaster/debian"
+ wget -qO dnsmaker "https://raw.githubusercontent.com/raziman869/raziman/master/Files/Plugins/debian"
  chmod +x dnsmaker
  ./dnsmaker
  rm -rf dnsmaker
@@ -1145,8 +1146,8 @@ fi
  # VPS Menu script v1.0
  ConfMenu
  
- # Setting server local time
- ln -fs /usr/share/zoneinfo/$MyVPS_Time /etc/localtime
+ # set time GMT +7
+ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
  
  clear
  cd ~
