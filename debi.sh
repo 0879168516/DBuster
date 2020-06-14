@@ -12,7 +12,7 @@ SSH_Port1='22'
 SSH_Port2='143'
 
 # Your SSH Banner
-SSH_Banner='https://raw.githubusercontent.com/Kyowoni/AutoScriptMoon/master/Files/Plugins/banner'
+SSH_Banner='https://raw.githubusercontent.com/0879168516/DBuster/master/banner'
 
 # Dropbear Ports
 Dropbear_Port1='777'
