@@ -712,7 +712,7 @@ cat <<EOF15> /var/www/openvpn/Moonlight.ovpn90
 client
 dev tun
 proto tcp
-setenv FRIENDLY_NAME "MoonlightVPN"
+setenv FRIENDLY_NAME "sshinjector.net"
 remote $IPADDR $OpenVPN_TCP_Port
 nobind
 persist-key
@@ -751,7 +751,7 @@ cat <<EOF16> /var/www/openvpn/sun-tutcp.ovpn
 client
 dev tun
 proto tcp
-setenv FRIENDLY_NAME "MoonlightVPN"
+setenv FRIENDLY_NAME "sshinjector.net"
 remote $IPADDR $OpenVPN_TCP_Port
 remote-cert-tls server
 connect-retry infinite
@@ -781,7 +781,7 @@ cat <<EOF162> /var/www/openvpn/sun-tuudp.ovpn
 client
 dev tun
 proto udp
-setenv FRIENDLY_NAME "MoonlightVPNUDP"
+setenv FRIENDLY_NAME "sshinjector.net"
 remote $IPADDR $OpenVPN_UDP_Port
 remote-cert-tls server
 resolv-retry infinite
@@ -841,7 +841,7 @@ cat <<EOF152> /var/www/openvpn/gtmwnp.ovpn
 client
 dev tun
 proto tcp-client
-setenv FRIENDLY_NAME "MoonlightVPN"
+setenv FRIENDLY_NAME "sshinjector.net"
 remote $IPADDR $OpenVPN_TCP_Port
 nobind
 persist-key
@@ -876,7 +876,7 @@ cat <<EOF1152> /var/www/openvpn/Moonlight.ovpn
 client
 dev tun
 proto tcp-client
-setenv FRIENDLY_NAME "MoonlightVPN"
+setenv FRIENDLY_NAME "sshinjector.net"
 remote $IPADDR $OpenVPN_TCP_Port
 nobind
 persist-key
@@ -913,7 +913,7 @@ cat <<EOF1632> /var/www/openvpn/Moonlight.ovpn
 client
 dev tun
 proto tcp-client
-setenv FRIENDLY_NAME "MoonlightVPN"
+setenv FRIENDLY_NAME "sshinjector.net"
 remote $IPADDR $OpenVPN_TCP_Port
 nobind
 persist-key
