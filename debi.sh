@@ -5,27 +5,26 @@
 #############################
 # Variables (Can be changed depends on your preferred values)
 # Script name
-MyScriptName='MoonlightVPN Premium Script'
+MyScriptName='Sshinjector'
 
 # OpenSSH Ports
 SSH_Port1='22'
-SSH_Port2='53'
-SSH_Port2='80'
+SSH_Port2='143'
 
 # Your SSH Banner
 SSH_Banner='https://raw.githubusercontent.com/Kyowoni/AutoScriptMoon/master/Files/Plugins/banner'
 
 # Dropbear Ports
-Dropbear_Port1='445'
+Dropbear_Port1='777'
 Dropbear_Port2='442'
 
 # Stunnel Ports
-Stunnel_Port1='446' # through Dropbear
+Stunnel_Port1='443' # through Dropbear
 Stunnel_Port2='444' # through OpenSSH
 
 # OpenVPN Ports
-OpenVPN_TCP_Port='465'
-OpenVPN_UDP_Port='25222'
+OpenVPN_TCP_Port='555'
+OpenVPN_UDP_Port='1194'
 
 # Privoxy Ports
 Privoxy_Port1='3356'
@@ -40,7 +39,7 @@ Squid_Port3='80'
 OvpnDownload_Port='85' # Before changing this value, please read this document. It contains all unsafe ports for Google Chrome Browser, please read from line #23 to line #89: https://chromium.googlesource.com/chromium/src.git/+/refs/heads/master/net/base/port_util.cc
 
 # Server local time
-MyVPS_Time='Asia/KualaLumpur'
+MyVPS_Time='Asia/Jakarta'
 #############################
 
 
@@ -202,7 +201,7 @@ MyStunnelD
  rm -rf /etc/stunnel/*
  
  # Creating stunnel certifcate using openssl
- openssl req -new -x509 -days 9999 -nodes -subj "/C=PH/ST=NCR/L=Manila/O=$MyScriptName/OU=$MyScriptName/CN=$MyScriptName" -out /etc/stunnel/stunnel.pem -keyout /etc/stunnel/stunnel.pem &> /dev/null
+ openssl req -new -x509 -days 9999 -nodes -subj "/C=ID/ST=Jateng/L=Blora/O=$MyScriptName/OU=$MyScriptName/CN=$MyScriptName" -out /etc/stunnel/stunnel.pem -keyout /etc/stunnel/stunnel.pem &> /dev/null
 ##  > /dev/null 2>&1
 
  # Creating stunnel server config
@@ -307,33 +306,35 @@ myOpenVPNconf2
 
  cat <<'EOF7'> /etc/openvpn/ca.crt
 -----BEGIN CERTIFICATE-----
-MIIFDDCCA/SgAwIBAgIJAIxbDcvh6vPEMA0GCSqGSIb3DQEBCwUAMIG0MQswCQYD
-VQQGEwJQSDEPMA0GA1UECBMGVGFybGFjMRMwEQYDVQQHEwpDb25jZXBjaW9uMRMw
-EQYDVQQKEwpKb2huRm9yZFRWMRMwEQYDVQQLEwpKb2huRm9yZFRWMRIwEAYDVQQD
-EwlEZWJpYW5WUE4xHTAbBgNVBCkTFEpvaG4gRm9yZCBNYW5naWxpbWFuMSIwIAYJ
-KoZIhvcNAQkBFhNhZG1pbkBqb2huZm9yZHR2Lm1lMB4XDTE5MTEyNTA4MDUzMFoX
-DTI5MTEyMjA4MDUzMFowgbQxCzAJBgNVBAYTAlBIMQ8wDQYDVQQIEwZUYXJsYWMx
-EzARBgNVBAcTCkNvbmNlcGNpb24xEzARBgNVBAoTCkpvaG5Gb3JkVFYxEzARBgNV
-BAsTCkpvaG5Gb3JkVFYxEjAQBgNVBAMTCURlYmlhblZQTjEdMBsGA1UEKRMUSm9o
-biBGb3JkIE1hbmdpbGltYW4xIjAgBgkqhkiG9w0BCQEWE2FkbWluQGpvaG5mb3Jk
-dHYubWUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCf+WkN868YMiCl
-d3z1Tq2OeRNb6ljiRGzEi1qrIvj/gXq6o0QD0SD+Nf3QWJrrJYFi1GECq72PNFhy
-2jLFgZH0RRLOVZfG+jwZ9itxofweiwALvgMdz2e+mpQItMxKh1ZYkzNw+4zJ7zJV
-u0Tq7YGPaMFPkLNU3V454rDYCdI8GG/wPDoW5FMc3FogI8fwylQvTWyE0yxHMxH6
-FkISA5hOuSo6MO1FgAfDdNNwxa/MAbpHwJ+W6RBHv4lhE6bQePMCj/90pgt3NpxF
-i++qwpSRfOR6OuuyDr1c++z6qhjLB7YzDLzj+HXCyfsPWPj+gJ0+3ckhW4gf/nhR
-uB+BTd8fAgMBAAGjggEdMIIBGTAdBgNVHQ4EFgQULXGeDQBLXCPId0F3r/58FDCm
-jC4wgekGA1UdIwSB4TCB3oAULXGeDQBLXCPId0F3r/58FDCmjC6hgbqkgbcwgbQx
-CzAJBgNVBAYTAlBIMQ8wDQYDVQQIEwZUYXJsYWMxEzARBgNVBAcTCkNvbmNlcGNp
-b24xEzARBgNVBAoTCkpvaG5Gb3JkVFYxEzARBgNVBAsTCkpvaG5Gb3JkVFYxEjAQ
-BgNVBAMTCURlYmlhblZQTjEdMBsGA1UEKRMUSm9obiBGb3JkIE1hbmdpbGltYW4x
-IjAgBgkqhkiG9w0BCQEWE2FkbWluQGpvaG5mb3JkdHYubWWCCQCMWw3L4erzxDAM
-BgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQBZUpwZ+LQWAQI8VW3hdZVN
-WV+P12yYQ1UzyagtB3MqBR4aZhjk42NFBrwPZwpvWUXB0GB4DhBuvbVPtqnt5p4V
-sDtQ6vKYeDlE/KDGDc0oJDsgxo2wwIXy+y/14EDqidAVjtf1rk5MDAAEVvonHxkP
-861kzoIOZ0+D7sJDo3aZ8uNy8UznrRSzLDT63o28DkL3iLASyt1GHWu05wYmgzsg
-m+w+AWvN5rL65mzyn/Bipf0I9snVB4saCgfy7TCI/4slOcMCNc2e6oOwOLvFA+s8
-dZMt2qg62PEOj/LblYGD+qLn0xLRwqK0UWSmWobz5LXoxyssZLK2KiMkS41PHkfh
+MIIFZDCCBEygAwIBAgIJANDo1Jr6Al+yMA0GCSqGSIb3DQEBCwUAMIHRMQswCQYD
+VQQGEwJJRDEUMBIGA1UECBMLSmF3YSBUZW5nYWgxDjAMBgNVBAcTBUJsb3JhMRgw
+FgYDVQQKEw9Tc2hpbmplY3Rvci5uZXQxMTAvBgNVBAsTKEZyZWUgUHJlbWl1bSBT
+U0ggZGFuIFZQTiBTU0wvVExTIFNlcnZpY2UxGzAZBgNVBAMTElNzaGluamVjdG9y
+Lm5ldCBDQTEPMA0GA1UEKRMGc2VydmVyMSEwHwYJKoZIhvcNAQkBFhJjc0Bzc2hp
+bmplY3Rvci5uZXQwHhcNMjAwNjExMDQwNjEyWhcNMzAwNjA5MDQwNjEyWjCB0TEL
+MAkGA1UEBhMCSUQxFDASBgNVBAgTC0phd2EgVGVuZ2FoMQ4wDAYDVQQHEwVCbG9y
+YTEYMBYGA1UEChMPU3NoaW5qZWN0b3IubmV0MTEwLwYDVQQLEyhGcmVlIFByZW1p
+dW0gU1NIIGRhbiBWUE4gU1NML1RMUyBTZXJ2aWNlMRswGQYDVQQDExJTc2hpbmpl
+Y3Rvci5uZXQgQ0ExDzANBgNVBCkTBnNlcnZlcjEhMB8GCSqGSIb3DQEJARYSY3NA
+c3NoaW5qZWN0b3IubmV0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA
+0K3vlvCxz3Rsx5y0SX90erEgCzFvpRJfQasAZaWKtnq/jbNt0ofIyY6l12yko6Ri
+jvjljPcIUvfqWtwlNYTfP3I/UHO2Kd2635cGN6KMvLNsMsSqfFPndBl/okn/8ewD
+6zmNFZ5H4FVXqB6YNZ6NYW2UTwzsxJjPsFVhiT/kzZ4dDB1m1gFSVC//NfWUZuvk
+PuPet7rKHKwe6blrCcU0J+JhHLwSavZ6TNMVDAEBBqkk6cqEEcZ7GiW0sDfqEfkT
+NsJh3WpllTIeqUokfh68oJVoLxI1RPPOdYONGNMVf/uPiNHLRi4S2Q+nVG4ePKdn
+3s04NAVXCZF8KQ4MHH3C2wIDAQABo4IBOzCCATcwHQYDVR0OBBYEFMMZw/FDwT+3
+l99B42dj1oUOXvbcMIIBBgYDVR0jBIH+MIH7gBTDGcPxQ8E/t5ffQeNnY9aFDl72
+3KGB16SB1DCB0TELMAkGA1UEBhMCSUQxFDASBgNVBAgTC0phd2EgVGVuZ2FoMQ4w
+DAYDVQQHEwVCbG9yYTEYMBYGA1UEChMPU3NoaW5qZWN0b3IubmV0MTEwLwYDVQQL
+EyhGcmVlIFByZW1pdW0gU1NIIGRhbiBWUE4gU1NML1RMUyBTZXJ2aWNlMRswGQYD
+VQQDExJTc2hpbmplY3Rvci5uZXQgQ0ExDzANBgNVBCkTBnNlcnZlcjEhMB8GCSqG
+SIb3DQEJARYSY3NAc3NoaW5qZWN0b3IubmV0ggkA0OjUmvoCX7IwDAYDVR0TBAUw
+AwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAinNNz43TcTf8ffvjJ1aKEQScaSuBXIT+
+9C8PLXWOhOZIFDxAAA40HtZu8iCjtpCu0Z+rLxDqnu2+KSgiOZXxp4mS3ooa6j5B
+ImeGIclzRgKPsSHZHU8VXXYdnPZP6KeBPWYnwc8bz9exG36Hpe9UBmvuWPtIAh2l
+8eFNzTiOoJwdPP3HpELYoB70ES8F4LtoIVteaZCoDubay0HT36SFGg1sUQ+6DqYl
+aRKiEUEkLjQAwe5Js8LtJTPWtrOpJvstmPJvCP38ycVIUBK/xrQl+PDKWE+7o2lA
+9cS9EcGkLyGX1pKYWFiNbNKxgMWp34MmM9axxYwANj08l1ZEqVtEvw==
 -----END CERTIFICATE-----
 EOF7
  cat <<'EOF9'> /etc/openvpn/server.crt
@@ -342,140 +343,142 @@ Certificate:
         Version: 3 (0x2)
         Serial Number: 1 (0x1)
     Signature Algorithm: sha256WithRSAEncryption
-        Issuer: C=MY, ST=JB, L=Concepcion, O=Moonlight, OU=MoonlightVPN, CN=OpenVPN/name=D-Kyo /emailAddress=Kyojenmoon@gmail.com
+        Issuer: C=ID, ST=Jawa Tengah, L=Blora, O=Sshinjector.net, OU=Free Premium SSH dan VPN SSL/TLS Service, CN=Sshinjector.net CA/name=server/emailAddress=cs@sshinjector.net
         Validity
-            Not Before: Nov 25 08:06:59 2019 GMT
-            Not After : Nov 22 08:06:59 2029 GMT
-        Subject: C=MY, ST=JB, L=Concepcion, O=Moonlight, OU=MoonlightVPN, CN=OpenVPN/name=D-Kyo /emailAddress=Kyojenmoon@gmail.com
+            Not Before: Jun 11 04:06:12 2020 GMT
+            Not After : Jun  9 04:06:12 2030 GMT
+        Subject: C=ID, ST=Jawa Tengah, L=Blora, O=Sshinjector.net, OU=Free Premium SSH dan VPN SSL/TLS Service, CN=server/name=server/emailAddress=cs@sshinjector.net
         Subject Public Key Info:
             Public Key Algorithm: rsaEncryption
                 Public-Key: (2048 bit)
                 Modulus:
-                    00:c6:6d:3d:64:58:08:e2:70:9b:a3:55:75:ec:5a:
-                    6e:9d:bc:7c:45:f5:64:c5:f6:23:2e:b0:1f:28:2e:
-                    cb:60:8d:71:73:3d:c4:e6:f7:e3:36:0b:ad:9d:87:
-                    f5:4b:2f:85:5f:d8:c9:88:d9:86:4a:52:ce:2b:39:
-                    c6:b9:83:e0:7e:ab:8e:1f:2f:11:cc:08:15:12:62:
-                    dd:8d:94:b1:79:3c:52:d9:cb:0a:6a:db:64:8b:ff:
-                    c7:41:5c:cc:f9:18:4f:74:1a:e7:c1:b4:b8:89:fd:
-                    56:5f:5c:65:c4:21:a8:08:98:3d:8e:35:44:b3:6f:
-                    93:b5:01:59:b4:35:23:99:00:79:fa:44:df:b3:4c:
-                    76:bf:3c:e4:f7:39:3e:50:e0:fe:85:8c:a0:e2:63:
-                    b1:ec:a3:32:cd:6b:9d:5a:0e:f6:66:92:ac:6f:15:
-                    5e:bb:3a:48:d9:3d:63:94:ff:9c:fb:d2:fe:5a:11:
-                    b5:1a:c1:6c:8a:9e:d3:29:8d:d6:ff:fc:9f:9f:a4:
-                    ad:9d:a0:ca:2b:6f:63:47:7f:7b:3c:98:bf:14:18:
-                    6c:36:38:7a:c3:5d:a9:5a:26:28:12:33:9d:17:1b:
-                    6f:2f:5d:33:e7:b5:8f:57:3a:3a:29:57:6a:0e:9e:
-                    84:7a:60:d9:9c:fb:c7:f3:f8:93:a7:cd:43:89:ec:
-                    3f:d3
+                    00:bd:da:30:b6:22:78:de:0d:d2:82:9f:42:9c:26:
+                    98:3e:29:b7:ef:35:28:8b:23:cf:bd:7b:ba:33:c5:
+                    14:64:57:9b:a4:fc:f3:e4:39:3d:2f:f3:e0:df:cd:
+                    09:f0:5d:13:a9:fb:b6:4d:6e:34:b3:c4:9c:b2:ab:
+                    b1:24:fc:11:08:cc:e8:98:6b:dc:a4:e7:d1:ae:bb:
+                    d7:b0:ce:18:db:8a:9e:12:57:19:04:b7:a7:47:c0:
+                    d5:36:7d:12:f8:36:2a:a6:05:48:9c:88:4a:09:8b:
+                    8b:99:67:9f:89:93:65:78:8c:52:6f:52:78:0e:c2:
+                    37:e3:c3:75:b6:92:60:39:85:bc:b3:5f:03:15:4f:
+                    45:0a:b1:4e:78:d8:1e:46:fe:da:d3:c9:16:8f:04:
+                    88:88:08:ba:70:e0:73:68:9d:7a:98:57:b2:2d:e3:
+                    cf:e9:d3:9e:f5:1e:dd:b0:dc:bd:a0:ca:50:6c:9d:
+                    2d:de:6a:af:c4:a9:ab:c4:82:d8:8f:5a:ae:0e:fd:
+                    b6:d1:d5:e1:8d:e9:c9:06:56:4c:24:50:35:82:8e:
+                    6b:42:8b:91:ff:31:ec:d1:f2:d9:e3:c7:71:c9:e1:
+                    58:dc:6c:a1:af:88:9a:c3:e3:c1:3b:24:06:e3:13:
+                    06:52:87:3e:33:eb:76:c1:92:3c:34:3a:75:51:72:
+                    41:ef
                 Exponent: 65537 (0x10001)
         X509v3 extensions:
-            X509v3 Basic Constraints:
+            X509v3 Basic Constraints: 
                 CA:FALSE
-            Netscape Cert Type:
+            Netscape Cert Type: 
                 SSL Server
-            Netscape Comment:
+            Netscape Comment: 
                 Easy-RSA Generated Server Certificate
-            X509v3 Subject Key Identifier:
-                50:31:04:C4:7A:47:C1:DA:46:CC:77:38:DE:1C:63:10:40:C3:80:22
-            X509v3 Authority Key Identifier:
-                keyid:2D:71:9E:0D:00:4B:5C:23:C8:77:41:77:AF:FE:7C:14:30:A6:8C:2E
-                DirName:/C=MY/ST=Johor/L=Concepcion/O=MoonlightVPN/OU=MoonlightVPN/CN=MoonlightVPN/name=D-Kyo/emailAddress=kyojenmoon@gmail.com
-                serial:8C:5B:0D:CB:E1:EA:F3:C4
-            X509v3 Extended Key Usage:
+            X509v3 Subject Key Identifier: 
+                B1:80:9C:AE:BE:C6:7C:5E:04:D2:11:0E:83:73:3B:BB:B6:DC:2F:FB
+            X509v3 Authority Key Identifier: 
+                keyid:C3:19:C3:F1:43:C1:3F:B7:97:DF:41:E3:67:63:D6:85:0E:5E:F6:DC
+                DirName:/C=ID/ST=Jawa Tengah/L=Blora/O=Sshinjector.net/OU=Free Premium SSH dan VPN SSL/TLS Service/CN=Sshinjector.net CA/name=server/emailAddress=cs@sshinjector.net
+                serial:D0:E8:D4:9A:FA:02:5F:B2
+
+            X509v3 Extended Key Usage: 
                 TLS Web Server Authentication
-            X509v3 Key Usage:
+            X509v3 Key Usage: 
                 Digital Signature, Key Encipherment
-            X509v3 Subject Alternative Name:
+            X509v3 Subject Alternative Name: 
                 DNS:server
     Signature Algorithm: sha256WithRSAEncryption
-         87:59:21:fd:7d:41:c8:87:8f:ff:13:85:e9:ae:31:da:43:bc:
-         48:3b:32:41:ba:65:82:9e:76:25:cd:43:8b:fc:07:16:49:c3:
-         8d:bd:ad:bf:0e:f6:d3:53:35:de:f2:c6:a6:62:c2:79:e1:49:
-         a5:ba:55:cf:b9:e9:58:d8:e5:02:96:0a:2a:97:7d:82:85:0b:
-         38:b5:dc:0d:6b:bd:51:a6:f7:3f:71:94:90:c9:ad:51:69:15:
-         24:58:04:99:96:69:40:9d:a1:9c:1c:a3:34:be:b9:c2:86:61:
-         ab:18:03:9b:27:b1:9f:1d:a3:5e:29:47:16:6f:7e:55:62:93:
-         57:85:45:34:2c:cb:10:2c:da:f0:9a:ee:3d:b2:92:87:d4:7e:
-         1b:c7:66:22:e9:4c:a2:95:d0:df:32:1a:87:ce:8a:27:08:f2:
-         87:a9:e6:eb:16:37:71:35:37:4d:8c:0e:df:12:d3:e0:63:0a:
-         53:7d:c8:02:c5:34:c5:23:68:c3:ba:33:5b:ad:92:bd:e2:d0:
-         9d:bc:bd:bd:0d:64:50:0f:f4:bd:91:fc:10:e0:ec:01:e8:a1:
-         50:ed:79:bf:12:49:bc:a4:93:17:d6:71:ed:9e:99:f3:42:6d:
-         26:b3:2d:ac:32:62:98:71:d1:e4:83:6c:58:02:e6:49:b6:c9:
-         73:76:eb:8b
+         bd:d3:67:29:af:31:52:8a:cd:6d:2b:5a:31:0b:33:cb:72:d1:
+         1c:fe:9a:79:d4:49:35:43:49:88:5c:ee:8f:5a:0e:25:7a:3f:
+         4d:5f:7e:a6:26:00:e3:61:c3:d5:1b:97:54:dd:73:88:a9:8f:
+         81:29:09:81:3d:ef:e0:95:a5:2c:05:81:b5:8a:f3:ce:0b:4f:
+         3d:fc:27:64:a0:e3:6b:1c:cf:38:7d:f9:85:c2:42:d3:39:10:
+         29:f3:e8:d2:bd:94:d3:e7:37:36:c4:ac:69:3d:a9:d0:18:4b:
+         2c:9f:db:4a:a3:cf:89:9c:2b:43:7e:25:8a:21:9f:dd:07:6d:
+         da:db:c0:87:a6:dd:fc:ed:0c:5f:a7:d7:81:96:d7:d4:73:10:
+         f6:97:c1:79:22:3e:0a:7a:14:ba:da:d3:ae:66:59:70:cc:2d:
+         b9:fd:44:cf:16:84:db:27:14:db:48:b1:24:af:48:f3:e2:d7:
+         50:94:92:b2:74:fd:21:d0:62:5d:bd:b8:49:d3:85:78:6c:92:
+         0f:5a:be:7b:ee:35:63:93:48:12:e7:e3:2f:36:2d:e7:16:ab:
+         34:bb:1c:97:3c:97:95:ba:a1:aa:0a:f1:38:14:80:22:c8:84:
+         28:cd:d0:e2:24:5f:d3:f2:28:24:38:c0:05:68:69:68:eb:4f:
+         4b:ce:07:65
 -----BEGIN CERTIFICATE-----
-MIIFfzCCBGegAwIBAgIBATANBgkqhkiG9w0BAQsFADCBtDELMAkGA1UEBhMCUEgx
-DzANBgNVBAgTBlRhcmxhYzETMBEGA1UEBxMKQ29uY2VwY2lvbjETMBEGA1UEChMK
-Sm9obkZvcmRUVjETMBEGA1UECxMKSm9obkZvcmRUVjESMBAGA1UEAxMJRGViaWFu
-VlBOMR0wGwYDVQQpExRKb2huIEZvcmQgTWFuZ2lsaW1hbjEiMCAGCSqGSIb3DQEJ
-ARYTYWRtaW5Aam9obmZvcmR0di5tZTAeFw0xOTExMjUwODA2NTlaFw0yOTExMjIw
-ODA2NTlaMIG0MQswCQYDVQQGEwJQSDEPMA0GA1UECBMGVGFybGFjMRMwEQYDVQQH
-EwpDb25jZXBjaW9uMRMwEQYDVQQKEwpKb2huRm9yZFRWMRMwEQYDVQQLEwpKb2hu
-Rm9yZFRWMRIwEAYDVQQDEwlEZWJpYW5WUE4xHTAbBgNVBCkTFEpvaG4gRm9yZCBN
-YW5naWxpbWFuMSIwIAYJKoZIhvcNAQkBFhNhZG1pbkBqb2huZm9yZHR2Lm1lMIIB
-IjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxm09ZFgI4nCbo1V17Fpunbx8
-RfVkxfYjLrAfKC7LYI1xcz3E5vfjNgutnYf1Sy+FX9jJiNmGSlLOKznGuYPgfquO
-Hy8RzAgVEmLdjZSxeTxS2csKattki//HQVzM+RhPdBrnwbS4if1WX1xlxCGoCJg9
-jjVEs2+TtQFZtDUjmQB5+kTfs0x2vzzk9zk+UOD+hYyg4mOx7KMyzWudWg72ZpKs
-bxVeuzpI2T1jlP+c+9L+WhG1GsFsip7TKY3W//yfn6StnaDKK29jR397PJi/FBhs
-Njh6w12pWiYoEjOdFxtvL10z57WPVzo6KVdqDp6EemDZnPvH8/iTp81Diew/0wID
-AQABo4IBmDCCAZQwCQYDVR0TBAIwADARBglghkgBhvhCAQEEBAMCBkAwNAYJYIZI
-AYb4QgENBCcWJUVhc3ktUlNBIEdlbmVyYXRlZCBTZXJ2ZXIgQ2VydGlmaWNhdGUw
-HQYDVR0OBBYEFFAxBMR6R8HaRsx3ON4cYxBAw4AiMIHpBgNVHSMEgeEwgd6AFC1x
-ng0AS1wjyHdBd6/+fBQwpowuoYG6pIG3MIG0MQswCQYDVQQGEwJQSDEPMA0GA1UE
-CBMGVGFybGFjMRMwEQYDVQQHEwpDb25jZXBjaW9uMRMwEQYDVQQKEwpKb2huRm9y
-ZFRWMRMwEQYDVQQLEwpKb2huRm9yZFRWMRIwEAYDVQQDEwlEZWJpYW5WUE4xHTAb
-BgNVBCkTFEpvaG4gRm9yZCBNYW5naWxpbWFuMSIwIAYJKoZIhvcNAQkBFhNhZG1p
-bkBqb2huZm9yZHR2Lm1lggkAjFsNy+Hq88QwEwYDVR0lBAwwCgYIKwYBBQUHAwEw
-CwYDVR0PBAQDAgWgMBEGA1UdEQQKMAiCBnNlcnZlcjANBgkqhkiG9w0BAQsFAAOC
-AQEAh1kh/X1ByIeP/xOF6a4x2kO8SDsyQbplgp52Jc1Di/wHFknDjb2tvw7201M1
-3vLGpmLCeeFJpbpVz7npWNjlApYKKpd9goULOLXcDWu9Uab3P3GUkMmtUWkVJFgE
-mZZpQJ2hnByjNL65woZhqxgDmyexnx2jXilHFm9+VWKTV4VFNCzLECza8JruPbKS
-h9R+G8dmIulMopXQ3zIah86KJwjyh6nm6xY3cTU3TYwO3xLT4GMKU33IAsU0xSNo
-w7ozW62SveLQnby9vQ1kUA/0vZH8EODsAeihUO15vxJJvKSTF9Zx7Z6Z80JtJrMt
-rDJimHHR5INsWALmSbbJc3briw==
+MIIFyzCCBLOgAwIBAgIBATANBgkqhkiG9w0BAQsFADCB0TELMAkGA1UEBhMCSUQx
+FDASBgNVBAgTC0phd2EgVGVuZ2FoMQ4wDAYDVQQHEwVCbG9yYTEYMBYGA1UEChMP
+U3NoaW5qZWN0b3IubmV0MTEwLwYDVQQLEyhGcmVlIFByZW1pdW0gU1NIIGRhbiBW
+UE4gU1NML1RMUyBTZXJ2aWNlMRswGQYDVQQDExJTc2hpbmplY3Rvci5uZXQgQ0Ex
+DzANBgNVBCkTBnNlcnZlcjEhMB8GCSqGSIb3DQEJARYSY3NAc3NoaW5qZWN0b3Iu
+bmV0MB4XDTIwMDYxMTA0MDYxMloXDTMwMDYwOTA0MDYxMlowgcUxCzAJBgNVBAYT
+AklEMRQwEgYDVQQIEwtKYXdhIFRlbmdhaDEOMAwGA1UEBxMFQmxvcmExGDAWBgNV
+BAoTD1NzaGluamVjdG9yLm5ldDExMC8GA1UECxMoRnJlZSBQcmVtaXVtIFNTSCBk
+YW4gVlBOIFNTTC9UTFMgU2VydmljZTEPMA0GA1UEAxMGc2VydmVyMQ8wDQYDVQQp
+EwZzZXJ2ZXIxITAfBgkqhkiG9w0BCQEWEmNzQHNzaGluamVjdG9yLm5ldDCCASIw
+DQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL3aMLYieN4N0oKfQpwmmD4pt+81
+KIsjz717ujPFFGRXm6T88+Q5PS/z4N/NCfBdE6n7tk1uNLPEnLKrsST8EQjM6Jhr
+3KTn0a6717DOGNuKnhJXGQS3p0fA1TZ9Evg2KqYFSJyISgmLi5lnn4mTZXiMUm9S
+eA7CN+PDdbaSYDmFvLNfAxVPRQqxTnjYHkb+2tPJFo8EiIgIunDgc2idephXsi3j
+z+nTnvUe3bDcvaDKUGydLd5qr8Spq8SC2I9arg79ttHV4Y3pyQZWTCRQNYKOa0KL
+kf8x7NHy2ePHccnhWNxsoa+ImsPjwTskBuMTBlKHPjPrdsGSPDQ6dVFyQe8CAwEA
+AaOCAbYwggGyMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgZAMDQGCWCGSAGG
++EIBDQQnFiVFYXN5LVJTQSBHZW5lcmF0ZWQgU2VydmVyIENlcnRpZmljYXRlMB0G
+A1UdDgQWBBSxgJyuvsZ8XgTSEQ6Dczu7ttwv+zCCAQYGA1UdIwSB/jCB+4AUwxnD
+8UPBP7eX30HjZ2PWhQ5e9tyhgdekgdQwgdExCzAJBgNVBAYTAklEMRQwEgYDVQQI
+EwtKYXdhIFRlbmdhaDEOMAwGA1UEBxMFQmxvcmExGDAWBgNVBAoTD1NzaGluamVj
+dG9yLm5ldDExMC8GA1UECxMoRnJlZSBQcmVtaXVtIFNTSCBkYW4gVlBOIFNTTC9U
+TFMgU2VydmljZTEbMBkGA1UEAxMSU3NoaW5qZWN0b3IubmV0IENBMQ8wDQYDVQQp
+EwZzZXJ2ZXIxITAfBgkqhkiG9w0BCQEWEmNzQHNzaGluamVjdG9yLm5ldIIJANDo
+1Jr6Al+yMBMGA1UdJQQMMAoGCCsGAQUFBwMBMAsGA1UdDwQEAwIFoDARBgNVHREE
+CjAIggZzZXJ2ZXIwDQYJKoZIhvcNAQELBQADggEBAL3TZymvMVKKzW0rWjELM8ty
+0Rz+mnnUSTVDSYhc7o9aDiV6P01ffqYmAONhw9Ubl1Tdc4ipj4EpCYE97+CVpSwF
+gbWK884LTz38J2Sg42sczzh9+YXCQtM5ECnz6NK9lNPnNzbErGk9qdAYSyyf20qj
+z4mcK0N+JYohn90HbdrbwIem3fztDF+n14GW19RzEPaXwXkiPgp6FLra065mWXDM
+Lbn9RM8WhNsnFNtIsSSvSPPi11CUkrJ0/SHQYl29uEnThXhskg9avnvuNWOTSBLn
+4y82LecWqzS7HJc8l5W6oaoK8TgUgCLIhCjN0OIkX9PyKCQ4wAVoaWjrT0vOB2U=
 -----END CERTIFICATE-----
 EOF9
  cat <<'EOF10'> /etc/openvpn/server.key
 -----BEGIN PRIVATE KEY-----
-MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDGbT1kWAjicJuj
-VXXsWm6dvHxF9WTF9iMusB8oLstgjXFzPcTm9+M2C62dh/VLL4Vf2MmI2YZKUs4r
-Oca5g+B+q44fLxHMCBUSYt2NlLF5PFLZywpq22SL/8dBXMz5GE90GufBtLiJ/VZf
-XGXEIagImD2ONUSzb5O1AVm0NSOZAHn6RN+zTHa/POT3OT5Q4P6FjKDiY7HsozLN
-a51aDvZmkqxvFV67OkjZPWOU/5z70v5aEbUawWyKntMpjdb//J+fpK2doMorb2NH
-f3s8mL8UGGw2OHrDXalaJigSM50XG28vXTPntY9XOjopV2oOnoR6YNmc+8fz+JOn
-zUOJ7D/TAgMBAAECggEBALidRIRKwCFmIfhKeAfqb4aEqp8wXI0un7c9mA970i9I
-CijtbHh0ZEqRfPvXViqY0R/HBGM195LJDhb7j2BlSYaxOO7cjVNmpaxQnc+va5vf
-uzn1hgC7lQYIeSvgGrkbnDjrG3uHGDcSpLzeq7RamAs/Ee5wszW7dxLuabaXxkH/
-owRXl6wvwD1WNGZsWJe8eP6GtBePm9+Ls5VLN0DPWyuJCFxhN/VpvvphECFt7EPF
-qY+ysAFqfSYkCyH7OklnLIx1jQ04iLbZ4HI+S9QH+w1261fDgCXAmf1kgXkgLaM6
-4wK+e93JRyqw87NZZIKN3ooq35n6wAUaS2erIYQFjrkCgYEA5c6qeNORIuq4F1jP
-JS9aaXEjaAKIgw20qTyZfhQv6AhkJ7GASgWSdBIIfZQo1JG4EsXwqQ/0x9EwDOVu
-glTYMT3tMi0zrzMklYS1G8iQElywAfTro/8sngfimvkQeRljoNdlrzO4+knUXmV8
-DymPDH6UGlhj2FwCFN+obhT1f48CgYEA3QrzBK+YRu6iqeMuifwXlcbUS/A+dBPJ
-qoYDzM6Zc0LYRTZSqhEHC8XkcQp/18LUxXFSrZXP2lcKmkqg4pgeAxALRLJW2pfz
-yAm1Hah5JXlvTjX4HnMTFL4fvB0oGZXsAimPNa/wUZvTSPYJRziZdEwVubW3AAxE
-THN3qxXoGX0CgYAWeSxwnnf+CygvmE7BmyzjTN4iiMTi1A9L0ZJNIxpAPbnVq+UY
-2AynbzAHX9rSVuHCbDsJvXa5p7pkOHejJTrzLdQpaQQ56O119cFkUyvLr+bCejol
-EopBdhHyB9NVlGcKzqWyCYPYbinnhVMphG3p0eMX5Hb3LKBDfE/TXBdZ/wKBgEwe
-3iup8M3Ulk3c/4TjPJgGvctc85Tzz4oa1qosJ6oKxgGnwHXyoTOLtay8CeSaor1P
-1kITCl5NhUg3FQqTihpR5x+ELubeV0R3G1kYUIf4Nr1/Vm/d/x8wjisw+0M8Xucr
-urapXSAtgmho2i8drbLgFMc8bcXlc4vEY9yWEbTdAoGAMa6KTb0U9M47mpJb23zu
-WiO8mFqSPYAnhHmXOiBOPlCoVpRbPquk3Xq32g9KU97jPNrH4X2HKgYpboMTWYOJ
-kR3Y5UeFF1xurA/RXUEREcP1zg6Uei5aj7S4Sp7CVfIQCOpJ8S/I4CZdAcvwY+pI
-ZTC1+KZJbFyPwFcrIylEeBc=
+MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC92jC2InjeDdKC
+n0KcJpg+KbfvNSiLI8+9e7ozxRRkV5uk/PPkOT0v8+DfzQnwXROp+7ZNbjSzxJyy
+q7Ek/BEIzOiYa9yk59Guu9ewzhjbip4SVxkEt6dHwNU2fRL4NiqmBUiciEoJi4uZ
+Z5+Jk2V4jFJvUngOwjfjw3W2kmA5hbyzXwMVT0UKsU542B5G/trTyRaPBIiICLpw
+4HNonXqYV7It48/p0571Ht2w3L2gylBsnS3eaq/EqavEgtiPWq4O/bbR1eGN6ckG
+VkwkUDWCjmtCi5H/MezR8tnjx3HJ4VjcbKGviJrD48E7JAbjEwZShz4z63bBkjw0
+OnVRckHvAgMBAAECggEAEd1xTgJKa2LTl1UTOIxtMRRN6aWP7h/tkYAOEocOFy8j
+R1BCRwyX1GZXl9e8grDPg+Ra0Eh5jx0GPc3oOnm5xKE7lfQ4bBAgbBfjAREzx5zw
+qPsnMIlzpU3hAmKcoVy/gKXooko05VcLSOE2YwTKvKA/tZgGEiV2iuk+r3JwuZjR
+ZYJjOrIkwl7mjP1d5v5/Npf+jpriYqqNBzwPNcG/rKoQErAGL8sQkbsAywp/sTUp
+nuzpUTkVk3CafNkGmUQl4PqHXB7brf0VKHjQ6pnlrGd7j8oY7xdSUkl51XD1/Wuu
+5Ck5cmQgveecKsKDMhnT2W4AvQgHfStafjNiA+IncQKBgQD0d2rwq7k6ZpOiP+Tf
+3vyB5gY+w7jIC+oB3phLN+czRi1qHjxfeQf6hF3du9mDJOI+lZAKGuMTAu5yDbAB
+sNh4Qcu95UaZTVp9hXUwdrneUtx/LEQyd0YH7LeCvjoXkERSbXY3vqvL3bGuZxdG
+C53iskhbyGa/GIE4EbnlzHX2WQKBgQDGzylM21pe+HseLOpSxflfUVaIphVfXfxH
+gO0v9eRr1W9IvFY/luRzdzS2JfE5QDgm7JLWYZaF8gBi3+X/vuM3Smr0ClBxRY0M
+F7t7l+J1+aQPEdnrX+TckWMvrEPGzX12r7cgG7hF09/g1VmXrbI+7gCcTlh8f6UP
+Mf21SJ8BhwKBgGTkD99pj5U5lj5EzklSNrXJX9RxZAYzXI0O9507YhB4Ku/7sIDa
+a1+JV0/WYetMwo5/nSV+eS50bEHnwjbAbGYdCV/CisNj+C+Lb5Tjusu1OMjHVRHa
+xa0plYbAySrGYFwATuSsrSwCv3yxkRpYWv2fBFvUtgqxq0qfji/3lMtpAoGBALiM
+bWYu6QDn4EHup8YWiJp2wsEuiwBwGlO11neC5ntDMX5vdhCpXX/h1EiRiA8BEh7v
+1I61IClOsBUYikSRShJ1Pjszp+C+E2R6U0szfsDM8AIdLBFWfvhQ7aW/X1sYPbMD
+AhcIJFKNj3ECG5y1XJUWEfMGtxU62Fn2qfCybQfZAoGBAMxOzyjWbtRD7u05vx/n
+N4UrP+1iow2RT7qcXP5tVcIVfL/XdDDIHpvBrrMzq+lkwUGxro56uNOjHH+C/1l5
+al19/xPibKvMeUHOuuSGjP4fGzDkejdxVio/rAGTNrpUUqIFJxx+h85byN2dHNId
+MzRXgYUDzClnV0mG+zRlv5/G
 -----END PRIVATE KEY-----
 EOF10
  cat <<'EOF13'> /etc/openvpn/dh2048.pem
 -----BEGIN DH PARAMETERS-----
-MIIBCAKCAQEAlrn8QcDrwXzqWCI7NMhPJVgEjdSxvyHw3EDVN8JrVfMegnvZA0VZ
-St3hduXTzlT7ceUGIxTJpM8RE6d3f1mMPnZJ4hBxJzzjrwMgSCupJrQDjSAIWGLZ
-elcmJS6WOAibpxzFIiPB6pRjoLaJF8b/J+YnO0bLUt1senWkg9ql8mU74VM1aG3A
-jOPztpLqYIRwla11bqAl4UcFLBI+PXAcPJsAIfzZ3DMn7aOa3Or6UjSmVQ8jGY/8
-1F0T67NgB8U7FrOVNimRlWfSJ//FiJkP0PScHVX2NQ0Cgwdo+wekjoFN5xbPxicc
-LxNkdRPpCACgzdo1M77xVsurtfcxsz+RswIBAg==
+MIIBCAKCAQEAn36F3ypMmkE9/iJ0zduSSymg5ZHkciiwRgS/mua+hyZHwxQAGEN7
+oD304NNxLv+kTt8lekc/bDjCnjfA3l/bUml72vRbOmqCiYWMx6VbyRWR9670jF8h
+wQauhBS7EvW/Icvn5nWdskLgcFjdTDQ2+sT5/NOVURHLb0Lhx5YnslEweWb4584r
+acVIEcsMsDLr2fpsh8KwpBwx3EwNuwzZjxR/SkegKNdajmcDOpTMaYXLKonrV1/j
+btXGCCjYBnPXLGVQCkMLCu9T5wmu9V1Lkz8vsh959hM/5FSz15vnQ4PY3/MgKUZT
+bNc/JITZzxeYwjWMUhMNGxYAOOpMdaOIqwIBAg==
 -----END DH PARAMETERS-----
 EOF13
 
