@@ -990,6 +990,133 @@ http-proxy-option CUSTOM-HEADER "X-Forwarded-For: viber.com"
 $(cat /etc/openvpn/ca.crt)
 </ca>
 EOF1632
+
+cat > /var/www/openvpn/tcp-client.ovpn <<END
+# OpenVPN Configuration Dibuat Oleh Sshinjector.net
+# (Contact Bussines: M Fauzan Romandhoni - m.fauzan58@yahoo.com)
+client
+dev tun
+proto tcp-client
+setenv FRIENDLY_NAME "sshinjector.net"
+remote $MYIP $OpenVPN_TCP_Port
+remote-cert-tls server
+bind
+float
+mute-replay-warnings
+connect-retry-max 9999
+redirect-gateway def1
+connect-retry 0 1
+resolv-retry infinite
+setenv CLIENT_CERT 0
+persist-tun
+persist-key
+auth-user-pass
+auth none
+auth-nocache
+auth-retry interact
+cipher none
+comp-lzo
+reneg-sec 0
+verb 0
+nice -20
+<ca>
+-----BEGIN CERTIFICATE-----
+MIIFZDCCBEygAwIBAgIJANDo1Jr6Al+yMA0GCSqGSIb3DQEBCwUAMIHRMQswCQYD
+VQQGEwJJRDEUMBIGA1UECBMLSmF3YSBUZW5nYWgxDjAMBgNVBAcTBUJsb3JhMRgw
+FgYDVQQKEw9Tc2hpbmplY3Rvci5uZXQxMTAvBgNVBAsTKEZyZWUgUHJlbWl1bSBT
+U0ggZGFuIFZQTiBTU0wvVExTIFNlcnZpY2UxGzAZBgNVBAMTElNzaGluamVjdG9y
+Lm5ldCBDQTEPMA0GA1UEKRMGc2VydmVyMSEwHwYJKoZIhvcNAQkBFhJjc0Bzc2hp
+bmplY3Rvci5uZXQwHhcNMjAwNjExMDQwNjEyWhcNMzAwNjA5MDQwNjEyWjCB0TEL
+MAkGA1UEBhMCSUQxFDASBgNVBAgTC0phd2EgVGVuZ2FoMQ4wDAYDVQQHEwVCbG9y
+YTEYMBYGA1UEChMPU3NoaW5qZWN0b3IubmV0MTEwLwYDVQQLEyhGcmVlIFByZW1p
+dW0gU1NIIGRhbiBWUE4gU1NML1RMUyBTZXJ2aWNlMRswGQYDVQQDExJTc2hpbmpl
+Y3Rvci5uZXQgQ0ExDzANBgNVBCkTBnNlcnZlcjEhMB8GCSqGSIb3DQEJARYSY3NA
+c3NoaW5qZWN0b3IubmV0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA
+0K3vlvCxz3Rsx5y0SX90erEgCzFvpRJfQasAZaWKtnq/jbNt0ofIyY6l12yko6Ri
+jvjljPcIUvfqWtwlNYTfP3I/UHO2Kd2635cGN6KMvLNsMsSqfFPndBl/okn/8ewD
+6zmNFZ5H4FVXqB6YNZ6NYW2UTwzsxJjPsFVhiT/kzZ4dDB1m1gFSVC//NfWUZuvk
+PuPet7rKHKwe6blrCcU0J+JhHLwSavZ6TNMVDAEBBqkk6cqEEcZ7GiW0sDfqEfkT
+NsJh3WpllTIeqUokfh68oJVoLxI1RPPOdYONGNMVf/uPiNHLRi4S2Q+nVG4ePKdn
+3s04NAVXCZF8KQ4MHH3C2wIDAQABo4IBOzCCATcwHQYDVR0OBBYEFMMZw/FDwT+3
+l99B42dj1oUOXvbcMIIBBgYDVR0jBIH+MIH7gBTDGcPxQ8E/t5ffQeNnY9aFDl72
+3KGB16SB1DCB0TELMAkGA1UEBhMCSUQxFDASBgNVBAgTC0phd2EgVGVuZ2FoMQ4w
+DAYDVQQHEwVCbG9yYTEYMBYGA1UEChMPU3NoaW5qZWN0b3IubmV0MTEwLwYDVQQL
+EyhGcmVlIFByZW1pdW0gU1NIIGRhbiBWUE4gU1NML1RMUyBTZXJ2aWNlMRswGQYD
+VQQDExJTc2hpbmplY3Rvci5uZXQgQ0ExDzANBgNVBCkTBnNlcnZlcjEhMB8GCSqG
+SIb3DQEJARYSY3NAc3NoaW5qZWN0b3IubmV0ggkA0OjUmvoCX7IwDAYDVR0TBAUw
+AwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAinNNz43TcTf8ffvjJ1aKEQScaSuBXIT+
+9C8PLXWOhOZIFDxAAA40HtZu8iCjtpCu0Z+rLxDqnu2+KSgiOZXxp4mS3ooa6j5B
+ImeGIclzRgKPsSHZHU8VXXYdnPZP6KeBPWYnwc8bz9exG36Hpe9UBmvuWPtIAh2l
+8eFNzTiOoJwdPP3HpELYoB70ES8F4LtoIVteaZCoDubay0HT36SFGg1sUQ+6DqYl
+aRKiEUEkLjQAwe5Js8LtJTPWtrOpJvstmPJvCP38ycVIUBK/xrQl+PDKWE+7o2lA
+9cS9EcGkLyGX1pKYWFiNbNKxgMWp34MmM9axxYwANj08l1ZEqVtEvw==
+-----END CERTIFICATE-----
+</ca>
+END
+
+cat > /var/www/openvpn/udp-client.ovpn <<END
+# OpenVPN Configuration Dibuat Oleh Sshinjector.net
+# (Contact Bussines: M Fauzan Romandhoni - m.fauzan58@yahoo.com)
+client
+dev tun
+proto udp-client
+setenv FRIENDLY_NAME "sshinjector.net"
+remote $MYIP $OpenVPN_UDP_Port
+remote-cert-tls server
+bind
+float
+mute-replay-warnings
+connect-retry-max 9999
+redirect-gateway def1
+connect-retry 0 1
+resolv-retry infinite
+setenv CLIENT_CERT 0
+persist-tun
+persist-key
+auth-user-pass
+auth none
+auth-nocache
+auth-retry interact
+cipher none
+comp-lzo
+reneg-sec 0
+verb 0
+nice -20
+<ca>
+-----BEGIN CERTIFICATE-----
+MIIFZDCCBEygAwIBAgIJANDo1Jr6Al+yMA0GCSqGSIb3DQEBCwUAMIHRMQswCQYD
+VQQGEwJJRDEUMBIGA1UECBMLSmF3YSBUZW5nYWgxDjAMBgNVBAcTBUJsb3JhMRgw
+FgYDVQQKEw9Tc2hpbmplY3Rvci5uZXQxMTAvBgNVBAsTKEZyZWUgUHJlbWl1bSBT
+U0ggZGFuIFZQTiBTU0wvVExTIFNlcnZpY2UxGzAZBgNVBAMTElNzaGluamVjdG9y
+Lm5ldCBDQTEPMA0GA1UEKRMGc2VydmVyMSEwHwYJKoZIhvcNAQkBFhJjc0Bzc2hp
+bmplY3Rvci5uZXQwHhcNMjAwNjExMDQwNjEyWhcNMzAwNjA5MDQwNjEyWjCB0TEL
+MAkGA1UEBhMCSUQxFDASBgNVBAgTC0phd2EgVGVuZ2FoMQ4wDAYDVQQHEwVCbG9y
+YTEYMBYGA1UEChMPU3NoaW5qZWN0b3IubmV0MTEwLwYDVQQLEyhGcmVlIFByZW1p
+dW0gU1NIIGRhbiBWUE4gU1NML1RMUyBTZXJ2aWNlMRswGQYDVQQDExJTc2hpbmpl
+Y3Rvci5uZXQgQ0ExDzANBgNVBCkTBnNlcnZlcjEhMB8GCSqGSIb3DQEJARYSY3NA
+c3NoaW5qZWN0b3IubmV0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA
+0K3vlvCxz3Rsx5y0SX90erEgCzFvpRJfQasAZaWKtnq/jbNt0ofIyY6l12yko6Ri
+jvjljPcIUvfqWtwlNYTfP3I/UHO2Kd2635cGN6KMvLNsMsSqfFPndBl/okn/8ewD
+6zmNFZ5H4FVXqB6YNZ6NYW2UTwzsxJjPsFVhiT/kzZ4dDB1m1gFSVC//NfWUZuvk
+PuPet7rKHKwe6blrCcU0J+JhHLwSavZ6TNMVDAEBBqkk6cqEEcZ7GiW0sDfqEfkT
+NsJh3WpllTIeqUokfh68oJVoLxI1RPPOdYONGNMVf/uPiNHLRi4S2Q+nVG4ePKdn
+3s04NAVXCZF8KQ4MHH3C2wIDAQABo4IBOzCCATcwHQYDVR0OBBYEFMMZw/FDwT+3
+l99B42dj1oUOXvbcMIIBBgYDVR0jBIH+MIH7gBTDGcPxQ8E/t5ffQeNnY9aFDl72
+3KGB16SB1DCB0TELMAkGA1UEBhMCSUQxFDASBgNVBAgTC0phd2EgVGVuZ2FoMQ4w
+DAYDVQQHEwVCbG9yYTEYMBYGA1UEChMPU3NoaW5qZWN0b3IubmV0MTEwLwYDVQQL
+EyhGcmVlIFByZW1pdW0gU1NIIGRhbiBWUE4gU1NML1RMUyBTZXJ2aWNlMRswGQYD
+VQQDExJTc2hpbmplY3Rvci5uZXQgQ0ExDzANBgNVBCkTBnNlcnZlcjEhMB8GCSqG
+SIb3DQEJARYSY3NAc3NoaW5qZWN0b3IubmV0ggkA0OjUmvoCX7IwDAYDVR0TBAUw
+AwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAinNNz43TcTf8ffvjJ1aKEQScaSuBXIT+
+9C8PLXWOhOZIFDxAAA40HtZu8iCjtpCu0Z+rLxDqnu2+KSgiOZXxp4mS3ooa6j5B
+ImeGIclzRgKPsSHZHU8VXXYdnPZP6KeBPWYnwc8bz9exG36Hpe9UBmvuWPtIAh2l
+8eFNzTiOoJwdPP3HpELYoB70ES8F4LtoIVteaZCoDubay0HT36SFGg1sUQ+6DqYl
+aRKiEUEkLjQAwe5Js8LtJTPWtrOpJvstmPJvCP38ycVIUBK/xrQl+PDKWE+7o2lA
+9cS9EcGkLyGX1pKYWFiNbNKxgMWp34MmM9axxYwANj08l1ZEqVtEvw==
+-----END CERTIFICATE-----
+</ca>
+END
+
  # Creating OVPN download site index.html
 cat <<'mySiteOvpn' > /var/www/openvpn/index.html
 <!DOCTYPE html>
@@ -1250,5 +1377,5 @@ echo "--------------------------------------------------------------------------
 echo " Please Reboot your VPS"
  # Clearing all logs from installation
  rm -rf /root/.bash_history && history -c && echo '' > /var/log/syslog
-rm -f debian.sh*
+rm -f deb.sh
 exit 1
