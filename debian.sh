@@ -39,7 +39,7 @@ vps="aneka";
 #if [[ $vps = "zvur" ]]; then
 	#source="http://"
 #else
-	source="https://cloudip.org/sshinjector.net/debian9"
+	source="#"
 #fi
 
 # MULAI SETUP
