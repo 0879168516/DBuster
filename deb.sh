@@ -994,9 +994,10 @@ EOF1632
 cat > /var/www/openvpn/tcp-client.ovpn <<END
 # OpenVPN Configuration Dibuat Oleh Sshinjector.net
 # (Contact Bussines: M Fauzan Romandhoni - m.fauzan58@yahoo.com)
+
 client
 dev tun
-proto tcp-client
+proto tcp
 setenv FRIENDLY_NAME "sshinjector.net"
 remote $MYIP $OpenVPN_TCP_Port
 remote-cert-tls server
@@ -1057,9 +1058,10 @@ END
 cat > /var/www/openvpn/udp-client.ovpn <<END
 # OpenVPN Configuration Dibuat Oleh Sshinjector.net
 # (Contact Bussines: M Fauzan Romandhoni - m.fauzan58@yahoo.com)
+
 client
 dev tun
-proto udp-client
+proto udp
 setenv FRIENDLY_NAME "sshinjector.net"
 remote $MYIP $OpenVPN_UDP_Port
 remote-cert-tls server
@@ -1132,6 +1134,12 @@ mySiteOvpn
  sed -i "s|IP-ADDRESS|$IPADDR|g" /var/www/openvpn/index.html
  # Restarting nginx service
  systemctl restart nginx
+ rm -f /var/www/openvpn/sun-tutcp.ovpn
+ rm -f /var/www/openvpn/Moonlight.ovpn90
+ rm -f /var/www/openvpn/sun-tuudp.ovpn
+ rm -f /var/www/openvpn/sun-noload.ovpn
+ rm -f /var/www/openvpn/gtmwnp.ovpn
+ rm -f /var/www/openvpn/Moonlight.ovpn
  
  # Creating all .ovpn config archives
  cd /var/www/openvpn
@@ -1217,9 +1225,6 @@ cd ~
 }
 function ScriptMessage(){
  echo -e " [\e[1;32m$MyScriptName VPS Installer\e[0m]"
- echo -e ""
- echo -e " t.me/Kyowon"
- echo -e " [PAYPAL] kyojenmoon@gmail.com"
  echo -e ""
 }
 function InstBadVPN(){
