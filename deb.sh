@@ -1427,7 +1427,7 @@ echo ""  | tee -a log-install.txt
 echo "Important Information"  | tee -a log-install.txt
 echo "   - Installation Log        : cat /root/log-install.txt"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
-echo "   - Webmin                  : http://MYIP:10000/"  | tee -a log-install.txt
+echo "   - Webmin                  : http://$MYIP:10000/"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "OpenVPN Configs Download"  | tee -a log-install.txt
