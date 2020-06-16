@@ -33,15 +33,6 @@ if [ "$ether" = "" ]; then
         ether=eth0
 fi
 
-#vps="zvur";
-vps="aneka";
-
-#if [[ $vps = "zvur" ]]; then
-	#source="http://"
-#else
-	source="https://cloudip.org/sshinjector.net/debian9"
-#fi
-
 # MULAI SETUP
 myip=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0' | head -n1`;
 myint=`ifconfig | grep -B1 "inet addr:$myip" | head -n1 | awk '{print $1}'`;
