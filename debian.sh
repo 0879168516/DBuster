@@ -1038,8 +1038,35 @@ echo "deb http://dl.bintray.com/dawidd6/neofetch jessie main" | tee -a /etc/apt/
 curl "https://bintray.com/user/downloadSubjectPublicKey?username=bintray"| apt-key add -
 apt-get update
 apt-get install neofetch
-echo "clear" >> .profile
- echo "neofetch" >> .profile
+
+wget -O /usr/bin/screenfetch "https://raw.githubusercontent.com/Kyowoni/AutoScriptMoon/master/Files/Plugins/screenfetch"
+chmod +x /usr/bin/screenfetch
+
+echo "clear"  >> .profile
+echo ""  >> .profile
+echo ".mmmm. .mmmm. m    m mmmmm mm   m  .mmm mmmmmm ..mmm. mmmmmmm .mmmm. mmmmm.
+#*   * #*   * #    #   #   #*m  #     # #      m*   *    #    m*  *m #   *#
+*#mmm. *#mmm. #mmmm#   #   # #m #     # #mmmmm #         #    #    # #mmm*.
+    *#     *# #    #   #   #  # #     # #      #         #    #    # #   *m
+*mmm#* *mmm#* #    # mm#mm #   ## *mmm* #mmmmm .*mmm*    #    .#mm#. #    *
+
+                          mm   m  mmmmmm  mmmmmmm                          
+                          #*m  #  #          #
+                          # #m #  #mmmmm     #
+                          #  # #  #          #
+                          #   ##  #mmmmm     # " | lolcat  >> .profile
+echo "
+                        Server - IP: $MYIP
+"  >> .profile
+echo "
+                 PREMIUM SCRIPT BY M FAUZAN ROMANDHONI             
+    ----------------------------------------------------------------
+    --=[ Hai Admin!!! Sudahkah Sholat & Berbuat Baik Hari Ini?? ]=--
+    ----------------------------------------------------------------
+" | boxes -d shell | lolcat  >> .profile
+echo -e "                   Ketik \e[032;1mmenu\e[0m Lalu \e[031;1mENTER\e[0m Untuk Fitur Lain   "
+echo "      ----------------------------------------------------------------" 
+date +"                      %A, %d-%m-%Y %H:%M:%S %Z                  " | lolcat  >> .profile
 
  echo "Installation has been completed!!"
 echo "--------------------------------------------------------------------------------"
